@@ -1,0 +1,16 @@
+ .site-container{
+  min-height: 100vh;
+ }
+ main{
+  flex: 1;
+ }
+ .btn-primary{
+  background-color: #f0c040;
+  color: black;
+ }
+ .rating span{
+  color: #ffc000;
+ }
+ .img-large{
+    max-width: 100%;
+ }
