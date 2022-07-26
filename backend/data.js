@@ -1,6 +1,7 @@
 const data = {
     products: [
         {
+            _id: '1',
             name: 'Slim Shirt',
             slug: 'Slim-Shirt',
             category: 'Shirts',
@@ -14,6 +15,7 @@ const data = {
         }
         ,
         {
+            _id: '2',
             name: 'Shirt',
             slug: 'T-Shirt',
             category: 'T-Shirts',
@@ -26,6 +28,7 @@ const data = {
             description: 'High Quality T-Shirt '
         },
         {
+            _id: '3',
             name: ' Shirt',
             slug: 'Shirt',
             category: 'Shirts',
@@ -38,6 +41,7 @@ const data = {
             description: 'High Quality Shirt '
         },
         {
+            _id: '4',
             name: ' Shirt',
             slug: 'Shirt01',
             category: 'Shirts',
