@@ -29,6 +29,9 @@ function reducer(state, action) {
             return { ...state, cart: { ...state.cart, cartItems } };
 
         }
+        case 'USER_SIGNIN': {
+            return { ...state, cart: { ...state.cart, cartItems } }
+        }
         default:
             return state;
     }
