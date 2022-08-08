@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Store } from "../Store";
+import CheckoutSteps from "../components/CheckoutSteps";
 function ShippingAddressScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -53,6 +54,7 @@ function ShippingAddressScreen() {
       <Helmet>
         <title>Shipping Address</title>
       </Helmet>
+      <CheckoutSteps step1 step2></CheckoutSteps>
       <div className="container small-container">
         <h1>Shipping Address</h1>
         <Form onSubmit={submitHandler}>
