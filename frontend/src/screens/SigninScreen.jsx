@@ -3,10 +3,12 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Helmet } from "react-helmet-async";
-import { Link, useLocation } from "react-router-dom";
-import { useState, useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useContext } from "react";
 import { Store } from "../Store";
 function SigninScreen() {
+  const navigate = useNavigate();
   const { search } = useLocation();
   const redirectInUrl = new URLSearchParams(search).get("redirect");
   const redirect = redirectInUrl ? redirectInUrl : "/";
@@ -20,9 +22,13 @@ function SigninScreen() {
         email,
         password,
       });
-      ctxDispatch({type:'USER_SIGNIN, payload:data})
-      console.log(data);
-    } catch (err) {}
+      ctxDispatch({ type: "USER_SIGNIN", payload: data });
+      // console.log(data);
+      localStorage.setItem("userInfo", JSON.stringify(data));
+      navigate(redirect || "/");
+    } catch (err) {
+      alert("invalid Email or Password");
+    }
   };
   return (
     <Container className="samll-container">
