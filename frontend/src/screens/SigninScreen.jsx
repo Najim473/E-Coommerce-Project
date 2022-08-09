@@ -4,9 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Store } from "../Store";
+import { getError } from "../Utlis";
 function SigninScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
@@ -15,6 +15,7 @@ function SigninScreen() {
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { userInfo } = state;
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -28,8 +29,15 @@ function SigninScreen() {
       navigate(redirect || "/");
     } catch (err) {
       alert("invalid Email or Password");
+      // toast.error(getError(err));
     }
   };
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, redirect, userInfo]);
+
   return (
     <Container className="samll-container">
       <Helmet>
