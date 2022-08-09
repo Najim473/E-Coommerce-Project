@@ -5,11 +5,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { Helmet } from "react-helmet-async";
 import { Store } from "../Store";
-import { getError } from "../Utlis";
+// import { getError } from "../Utlis";
 function SignupScreen() {
   const navigate = useNavigate();
   const { search } = useLocation();
@@ -24,8 +24,8 @@ function SignupScreen() {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      toast.error("🦄 Wow so easy!");
-      // alert("password don't match");
+      // toast.error("🦄 Wow so easy!");
+      alert("password don't match");
       return;
     }
     try {
@@ -39,7 +39,7 @@ function SignupScreen() {
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate(redirect || "/");
     } catch (err) {
-      // alert("invalid Email or Password");
+      alert("invalid Email or Password");
       // toast.error(getError(err));
     }
   };

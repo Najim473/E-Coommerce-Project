@@ -4,11 +4,13 @@ const intialState = {
     // FOR LOGOUT 
     userInfo: localStorage.getItem('userInfo') ?
         JSON.parse(localStorage.getItem('userInfo')) : null,
-
     cart: {
         // SHIPPING ADDRESS 
         shippingAddress: localStorage.getItem('shippingAddress') ?
             JSON.parse(localStorage.getItem('shippingAddress')) : {},
+        // PAYMENT METHOD 
+        paymentMethod: localStorage.getItem('paymentMethod') ?
+            JSON.parse(localStorage.getItem('paymentMethod')) : '',
         // cartItems: [],
         cartItems: localStorage.getItem('cartItems') ?
             JSON.parse(localStorage.getItem('cartItems')) : []
@@ -44,7 +46,8 @@ function reducer(state, action) {
                 ...state, userInfo: null,
                 cart: {
                     cartItems: [],
-                    shippingAddress: {}
+                    shippingAddress: {},
+                    paymentMethod: '',
                 }
             };
         }
@@ -52,6 +55,13 @@ function reducer(state, action) {
             return {
                 ...state, cart: {
                     ...state.cart, shippingAddress: action.payload,
+                }
+            };
+        }
+        case 'SAVE_PAYMENT_METHOD': {
+            return {
+                ...state, cart: {
+                    ...state.cart, paymentMethod: action.payload,
                 }
             };
         }
